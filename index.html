@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Git Merge Lab</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: #f5f3eb;
+            color: #23352c;
+            font: 16px system-ui, sans-serif
+        }
+
+        header {
+            background: #163c30;
+            color: #fff;
+            padding: 30px max(6%, calc((100% - 1050px)/2)) 55px
+        }
+
+        nav {
+            font-weight: 800;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: space-between
+        }
+
+        nav span {
+            font-size: 12px;
+            letter-spacing: 0;
+            color: #b7d5c4
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 65px);
+            line-height: 1.05;
+            margin: 45px 0 15px
+        }
+
+        header p {
+            color: #c9ded2
+        }
+
+        a {
+            display: inline-block;
+            background: #e7b96e;
+            color: #163c30;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 12px
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px
+        }
+
+        article,
+        aside {
+            background: white;
+            border: 1px solid #e0e3d9;
+            border-radius: 14px;
+            padding: 22px
+        }
+
+        article b {
+            color: #28734f
+        }
+
+        code {
+            font-size: 12px;
+            background: #edf4ee;
+            padding: 6px;
+            display: block;
+            overflow-wrap: anywhere
+        }
+
+        aside {
+            margin-top: 24px
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64756b
+        }
+
+        .diagram {
+            font: bold 15px monospace;
+            white-space: pre-wrap;
+            background: #eaf2ec;
+            padding: 20px;
+            border-radius: 8px
+        }
+
+        @media(max-width:600px) {
+            nav {
+                gap: 12px;
+                flex-wrap: wrap
+            }
+
+            main {
+                padding: 16px
+            }
+
+            .diagram {
+                font-size: 11px;
+                overflow: auto
+            }
+        }
+
+
+        section.details {
+            margin-top: 28px
+        }
+
+        .details h2 {
+            margin-bottom: 12px
+        }
+
+        .details p,
+        .details li {
+            line-height: 1.65
+        }
+
+        .details ol {
+            padding-left: 24px
+        }
+
+        .details li {
+            margin: 12px 0
+        }
+
+        .details code {
+            margin-top: 6px
+        }
+
+        .tablewrap {
+            overflow: auto
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e3d9
+        }
+
+        th {
+            background: #eaf2ec
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eaf2ec;
+            color: #28734f;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 700
+        }
+
+        pre {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            background: #163c30;
+            color: #fff;
+            padding: 18px;
+            border-radius: 10px
+        }
+
+        .details article {
+            margin-bottom: 12px
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>DEV LAB <span>Version Control / Experiment 01</span></nav>
+        <h1>Build together.<br>Merge with confidence.</h1>
+        <p>A practical demonstration of Git branching, commits and merging.</p><a href="#workflow">Explore workflow</a>
+    </header>
+    <main>
+        <section id="workflow">
+            <h2>Git workflow</h2>
+            <div class="grid">
+                <article><b>01 / Initialize</b>
+                    <p>Create a repository to track project changes.</p><code>git init</code>
+                </article>
+                <article><b>02 / Branch</b>
+                    <p>Develop features independently of the main branch.</p><code>git switch -c feature-about</code>
+                </article>
+                <article><b>03 / Commit</b>
+                    <p>Save changes with a meaningful message.</p><code>git add .<br>git commit -m "Add feature"</code>
+                </article>
+                <article><b>04 / Merge</b>
+                    <p>Combine completed work into the main branch.</p>
+                    <code>git switch main<br>git merge --no-ff feature-about</code>
+                </article>
+            </div>
+        </section>
+        <aside>
+            <h2>Branch and merge demonstration</h2>
+            <p>The feature branch adds this section independently. A merge commit combines it with the main website.</p>
+            <div class="diagram">main ●────────────● merge
+                ╲ ╱
+                feature ●────────●</div>
+            <h3>Verify the result</h3><code>git log --oneline --graph --all</code>
+            <p>Use the command above to view the actual repository history.</p>
+        </aside>
+        <section class="details">
+            <h2>Experiment overview</h2>
+            <div class="grid">
+                <article><b>Aim</b>
+                    <p>To demonstrate Git version control by creating branches, committing changes and merging a feature
+                        branch into the main branch.</p>
+                </article>
+                <article><b>Tools required</b>
+                    <p>Git, Visual Studio Code, a web browser and GitHub for remote repository hosting.</p>
+                </article>
+                <article><b>Learning objectives</b>
+                    <p>Understand independent development, track changes, combine work and verify repository history.
+                    </p>
+                </article>
+            </div>
+        </section>
+        <section class="details">
+            <h2>Understanding Git</h2>
+            <div class="grid">
+                <article><b>Repository</b>
+                    <p>A project and its tracked version history.</p>
+                </article>
+                <article><b>Branch</b>
+                    <p>An independent line of development that allows changes without disturbing the main branch.</p>
+                </article>
+                <article><b>Commit</b>
+                    <p>A recorded snapshot of staged changes with a descriptive message.</p>
+                </article>
+                <article><b>Merge</b>
+                    <p>Combines changes from different branches into the current branch.</p>
+                </article>
+            </div>
+        </section>
+        <section class="details">
+            <h2>Step-by-step procedure</h2>
+            <article>
+                <p>For a fresh practice repository, follow these steps. This supplied project already contains a
+                    completed merge.</p>
+                <ol>
+                    <li>Create a project folder and initialize Git.<code>git init -b main</code></li>
+                    <li>Create index.html, stage it and commit the initial
+                        website.<code>git add .<br>git commit -m "Create website"</code></li>
+                    <li>Create and switch to a feature branch.<code>git switch -c feature-about</code></li>
+                    <li>Add an About section to the HTML file and commit the
+                        changes.<code>git add index.html<br>git commit -m "Add about section"</code></li>
+                    <li>Return to main and merge the feature
+                        branch.<code>git switch main<br>git merge --no-ff feature-about</code></li>
+                    <li>Verify the branches, history and working
+                        tree.<code>git branch<br>git log --oneline --graph --all<br>git status</code></li>
+                </ol>
+            </article>
+        </section>
+        <section class="details">
+            <h2>Types of merging</h2>
+            <div class="grid">
+                <article><b>Fast-forward merge</b>
+                    <p>Moves the current branch pointer forward when there are no divergent commits.</p>
+                </article>
+                <article><b>Three-way merge</b>
+                    <p>Combines divergent changes using a common ancestor and normally creates a merge commit.</p>
+                </article>
+                <article><b>Merge conflict</b>
+                    <p>Occurs when Git cannot automatically combine competing changes. Edit the conflicting file, stage
+                        it and commit the resolution.</p>
+                </article>
+            </div>
+        </section>
+        <section class="details">
+            <h2>Important Git commands</h2>
+            <article class="tablewrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>git status</td>
+                            <td>Check working tree and staging area</td>
+                        </tr>
+                        <tr>
+                            <td>git branch</td>
+                            <td>List local branches</td>
+                        </tr>
+                        <tr>
+                            <td>git add .</td>
+                            <td>Stage changes</td>
+                        </tr>
+                        <tr>
+                            <td>git commit -m "message"</td>
+                            <td>Record staged changes</td>
+                        </tr>
+                        <tr>
+                            <td>git merge feature-about</td>
+                            <td>Merge feature changes into current branch</td>
+                        </tr>
+                        <tr>
+                            <td>git push</td>
+                            <td>Upload commits to a remote repository</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+        <section class="details">
+            <h2>Actual merge history</h2>
+            <article><span class="tag">Merge completed</span>
+                <p>The following is the original merge history included in this repository. Later documentation and
+                    design commits extend it.</p>
+                <pre>*   9eef845 Merge feature-about into main
+|\
+| * 5fb06fa Add branch and merge demonstration
+* | 613fc1c Add lab documentation
+|/
+* ef834c0 Create Git workflow website</pre>
+                <p>Run git log --oneline --graph --all to view the complete current history.</p>
+            </article>
+        </section>
+        <section class="details">
+            <h2>Inference and result</h2>
+            <article><b>Inference</b>
+                <p>Git branches allow developers to work independently while maintaining a stable main branch. Commits
+                    provide a traceable history, and merging integrates completed changes.</p><b>Result</b>
+                <p>The feature-about branch was successfully merged into main. The website contains both the original
+                    workflow and the branch demonstration, and the merge commit is preserved in the repository history.
+                </p>
+            </article>
+        </section>
+    </main>
+    <footer>FEDF Lab · Git Version Control</footer>
+</body>
+
+</html>
